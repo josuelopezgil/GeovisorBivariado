@@ -93,7 +93,7 @@ const [nivelGeografico, setNivelGeografico] =
   */
 
   const [basemap, setBasemap] =
-    useState('noche');
+    useState('estadistico');
 
   const [basemapBeforeMobile3D, setBasemapBeforeMobile3D] = useState(null);
 
@@ -151,7 +151,7 @@ const [nivelGeografico, setNivelGeografico] =
 
   const availableMobileBasemaps = BASEMAPS.filter(item => item.id !== 'urbano3d');
   const currentMobileBasemap = basemap === 'urbano3d'
-    ? basemapBeforeMobile3D || 'noche'
+    ? basemapBeforeMobile3D || 'estadistico'
     : basemap;
   const currentMobileBasemapIndex = availableMobileBasemaps.findIndex(
     item => item.id === currentMobileBasemap
@@ -284,7 +284,7 @@ const [nivelGeografico, setNivelGeografico] =
             title="Vista 3D"
             onClick={() => {
               if (basemap === 'urbano3d') {
-                setBasemap(basemapBeforeMobile3D || 'noche');
+                setBasemap(basemapBeforeMobile3D || 'estadistico');
                 setBasemapBeforeMobile3D(null);
               } else {
                 setBasemapBeforeMobile3D(basemap);
