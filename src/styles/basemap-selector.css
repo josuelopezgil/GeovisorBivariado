@@ -1,0 +1,237 @@
+/* =====================================================
+   BASEMAP SELECTOR
+   GeoViewer Framework - DANE
+   ===================================================== */
+
+.basemap-selector {
+
+    margin-top: 12px;
+
+}
+
+.basemap-selector h3 {
+
+    margin-bottom: 12px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #333;
+
+}
+
+/*======================================================
+  GRID
+======================================================*/
+
+.basemap-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+}
+
+/*======================================================
+  TARJETA
+======================================================*/
+
+.basemap-card {
+
+    position: relative;
+
+    background: #ffffff;
+
+    border: 2px solid transparent;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+}
+
+/*======================================================
+  HOVER
+======================================================*/
+
+.basemap-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(0,0,0,.20);
+
+}
+
+/*======================================================
+  TARJETA ACTIVA
+======================================================*/
+
+.basemap-card.active {
+
+    border-color: #C2185B;
+
+    transform: scale(1.03);
+
+    box-shadow: 0 8px 20px rgba(194,24,91,.35);
+
+}
+
+/*======================================================
+  IMAGEN
+======================================================*/
+
+.basemap-card img {
+
+    width: 100%;
+
+    height: 90px;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+/*======================================================
+  INFORMACIÓN
+======================================================*/
+
+.basemap-info {
+
+    padding: 10px;
+
+    background: #ffffff;
+
+}
+
+.basemap-title {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #333;
+
+}
+
+.basemap-description {
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #777;
+
+    line-height: 1.3;
+
+}
+
+/*======================================================
+  BADGE
+======================================================*/
+
+.basemap-badge {
+
+    position: absolute;
+
+    top: 8px;
+
+    left: 8px;
+
+    background: #C2185B;
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.30);
+
+    z-index: 20;
+
+}
+
+/*======================================================
+  CHECK
+======================================================*/
+
+.basemap-check {
+
+    position: absolute;
+
+    top: 8px;
+
+    right: 8px;
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #C2185B;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.30);
+
+    z-index: 20;
+
+}
+
+/*======================================================
+  EFECTO HOVER SOBRE LA IMAGEN
+======================================================*/
+
+.basemap-card img {
+
+    transition: transform .30s ease;
+
+}
+
+.basemap-card:hover img {
+
+    transform: scale(1.05);
+
+}
+
+/*======================================================
+  RESPONSIVE
+======================================================*/
+
+@media (max-width: 480px) {
+
+    .basemap-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

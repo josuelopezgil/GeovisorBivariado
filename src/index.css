@@ -1,0 +1,325 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100dvh;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.mobile-map-nav,
+.mobile-panel-backdrop,
+.mobile-map-header {
+  display: none;
+}
+
+/* En pantallas estrechas, el mapa queda visible y los controles abren un panel a la vez. */
+@media (max-width: 900px) {
+  .geoportal-layout {
+    position: relative;
+  }
+
+  .geoportal-map {
+    width: 100%;
+    height: 100%;
+    flex: 1 1 100%;
+  }
+
+  .mobile-map-header {
+    position: absolute;
+    top: calc(8px + env(safe-area-inset-top));
+    left: 10px;
+    right: 10px;
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 10px 8px;
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.18);
+    text-align: left;
+    backdrop-filter: blur(8px);
+  }
+
+  .mobile-map-header h1 {
+    margin: 0;
+    color: #17212b;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .mobile-map-tools {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-map-tools::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-map-tool {
+    display: flex;
+    flex: 1 0 62px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 62px;
+    min-height: 48px;
+    padding: 5px 4px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #334155;
+    font: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.1;
+    white-space: nowrap;
+    touch-action: manipulation;
+  }
+
+  .mobile-map-tool svg {
+    width: 17px;
+    height: 17px;
+    font-size: 17px;
+  }
+
+  .mobile-map-tool[aria-pressed="true"] {
+    border-color: #a5d9dc;
+    background: #e8f6f6;
+    color: #087e88;
+  }
+
+  .mobile-map-tool:disabled {
+    opacity: 0.45;
+  }
+
+  .mobile-map-tool:focus-visible {
+    outline: 2px solid #16858f;
+    outline-offset: 2px;
+  }
+
+  .geoportal-sidebar,
+  .geoportal-right-panel {
+    display: none !important;
+    position: absolute;
+    top: auto !important;
+    bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+    left: 50% !important;
+    right: auto !important;
+    width: calc(100% - 20px) !important;
+    min-width: 0 !important;
+    max-width: 520px !important;
+    height: min(72dvh, 680px) !important;
+    max-height: calc(100dvh - 96px - env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    border: 1px solid #d9e2e8;
+    border-radius: 14px;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.24);
+    z-index: 110 !important;
+  }
+
+  .geoportal-sidebar.mobile-open,
+  .geoportal-right-panel.mobile-open {
+    display: flex !important;
+  }
+
+  .sidebar-collapse-button,
+  .right-panel-collapse-button {
+    display: none !important;
+  }
+
+  .geoportal-sidebar .sidebar-content,
+  .geoportal-right-panel .right-panel-content {
+    min-height: 0;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .geoportal-sidebar .sidebar-content select,
+  .geoportal-right-panel .right-panel-visual select {
+    min-height: 44px;
+  }
+
+  .mobile-panel-backdrop {
+    position: absolute;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgba(15, 23, 42, 0.28);
+    z-index: 90;
+  }
+
+  .mobile-map-nav {
+    position: absolute;
+    left: 50%;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    z-index: 130;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: min(380px, calc(100% - 24px));
+    padding: 6px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.22);
+    backdrop-filter: blur(8px);
+  }
+
+  .mobile-map-nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 48px;
+    border: 0;
+    border-radius: 11px;
+    background: transparent;
+    color: #334155;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    touch-action: manipulation;
+  }
+
+  .mobile-map-nav button[aria-pressed="true"] {
+    background: #e8f6f6;
+    color: #087e88;
+  }
+
+  .mobile-map-nav button:focus-visible {
+    outline: 2px solid #16858f;
+    outline-offset: 2px;
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 50px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 20px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}

@@ -1,0 +1,91 @@
+.geoportal-right-panel {
+  color: #334155;
+  text-align: left;
+}
+
+.geoportal-right-panel .right-panel-content {
+  min-height: 0;
+  padding: 7px 8px 12px;
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-width: thin;
+}
+
+.geoportal-right-panel .right-panel-location {
+  margin: 0 0 7px !important;
+  padding: 8px 10px !important;
+  border-color: #d6e8e9 !important;
+  border-radius: 9px !important;
+  background: #f4f9f9 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.geoportal-right-panel .right-panel-location > div + div {
+  margin-top: 2px;
+}
+
+.geoportal-right-panel .right-panel-location strong {
+  color: #475569;
+}
+
+.geoportal-right-panel .right-panel-legend {
+  padding: 2px 6px 5px !important;
+}
+
+.geoportal-right-panel .right-panel-card {
+  margin: 0 0 8px !important;
+  padding: 9px 10px !important;
+  border-color: #e2e8f0 !important;
+  border-radius: 9px !important;
+  background: #fbfcfd !important;
+}
+
+.geoportal-right-panel .right-panel-visual > div:first-child,
+.geoportal-right-panel .right-panel-territory > div:first-child {
+  margin-bottom: 7px !important;
+  color: #117d86 !important;
+  font-size: 13px !important;
+  line-height: 1.3;
+}
+
+.geoportal-right-panel .right-panel-visual > label {
+  display: flex;
+  align-items: center;
+  gap: 8px !important;
+  margin-top: 5px !important;
+  color: #334155;
+  font-size: 12px !important;
+  line-height: 1.35;
+}
+
+.geoportal-right-panel .right-panel-visual > label:first-of-type {
+  margin-top: 0 !important;
+}
+
+.geoportal-right-panel input[type="checkbox"] {
+  margin: 0;
+  accent-color: #16858f;
+}
+
+.geoportal-right-panel .right-panel-visual select {
+  min-height: 34px;
+  padding: 5px 7px !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+  color: #334155;
+  font: inherit;
+}
+
+.geoportal-right-panel .right-panel-visual input[type="range"] {
+  accent-color: #16858f;
+}
+
+.geoportal-right-panel .right-panel-territory > div + div {
+  border-color: #e5e7eb !important;
+}
+
+@media (max-width: 900px) {
+  .geoportal-right-panel .right-panel-content {
+    padding: 6px 7px 10px;
+  }
+}
